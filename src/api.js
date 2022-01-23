@@ -1,4 +1,4 @@
-const baseURL = "https://139.59.23.196"
+const baseURL = "139.59.23.196"
 const apiURL = `${baseURL}/api`
 
 export const API = {
