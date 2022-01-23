@@ -17,7 +17,7 @@ import JobUpdate from "./components/JobUpdate";
 import JobDelete from "./components/JobDelete";
 import Signup from "./components/Signup";
 import Homeheader from "./components/Homeheader";
-import { Payment} from "./components/Payment";
+//import { Payment} from "./components/Payment";
 import Success from "./components/Success";
 import Footer from "./components/Footer";
 import Faqs from "./components/Faqs";
