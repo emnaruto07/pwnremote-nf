@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import ReactGA from 'react-ga';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+
+
+ReactGA.initialize('UA-218051241-1'); // add your tracking id here.
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <React.StrictMode>
