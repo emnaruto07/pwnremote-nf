@@ -68,7 +68,7 @@ export default function JobCreate(){
           }
       })
           .then(res => {
-              // console.log(res.data)
+              // (res.data)
               navigate("/")
             //   axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, 
             //   {
@@ -77,9 +77,9 @@ export default function JobCreate(){
             //     }
             // })
             //     .then(res => {
-            //         console.log(res)
+            //         (res)
             //         window.location.assign(res.data.sessionUrl);
-            //         console.log(res.data)
+            //         (res.data)
       
             //     })
   
@@ -97,7 +97,7 @@ export default function JobCreate(){
   //   }else {
   //     setPrice(price - 25)
   //   }
-  //   // console.log(price)
+  //   // (price)
   // }
 
     return(

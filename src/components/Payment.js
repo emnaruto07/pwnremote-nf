@@ -16,7 +16,7 @@ export function Payment() {
     const { user: { token } } = useContext(AuthContext)
     const { id } = useParams()
     const [clientSecret, setClientSecret] = useState("");
-    // console.log(clientSecret)
+    // (clientSecret)
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads

@@ -23,7 +23,7 @@ export default function JobDetail(){
         function fetchJobList(){
             axios.get(API.jobs.retrieve(id))
             .then(res => {
-            // console.log(res.data)
+            // (res.data)
             setJob(res.data)
         })
     }

@@ -70,7 +70,7 @@ export default function App() {
               style={{zIndex:'2', marginLeft:'10px', position:'fixed'}}
               position="left"
               numberOfStars={5}
-              // handleClose={() => console.log("handleclose")}
+              // handleClose={() => ("handleclose")}
               handleSubmit={(data) => 
                 fetch(API.userfeedback.feedback, {
                   headers: {
@@ -90,7 +90,7 @@ export default function App() {
                   alert('Our servers are having issues! We couldn\'t send your feedback!', error);
                 })
               }
-              // handleButtonClick={() => console.log("handleButtonClick")}
+              // handleButtonClick={() => ("handleButtonClick")}
               
               /> 
               <Footer />
