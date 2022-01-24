@@ -1,4 +1,4 @@
-const baseURL = "http://139.59.23.196"
+const baseURL = "https://api.pwnremote.com/"
 const apiURL = `${baseURL}/api`
 
 export const API = {
