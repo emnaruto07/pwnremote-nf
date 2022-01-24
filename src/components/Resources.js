@@ -5,6 +5,9 @@ function Resources() {
         <div className="text-center border-solid border-2 shadow-xl p-4 rounded-lg">
             <strong >What to learn hacking?</strong> 
             <h3>Here are some of the resources:</h3>
+            <ul>
+                <il>https://portswigger.net/web-security</il>
+            </ul>
 
         </div>
     )
