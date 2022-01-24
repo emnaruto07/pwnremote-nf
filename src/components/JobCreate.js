@@ -68,7 +68,7 @@ export default function JobCreate(){
           }
       })
           .then(res => {
-              console.log(res.data)
+              // console.log(res.data)
               navigate("/")
             //   axios.post(API.payment.createPayment, {params:{'price': price, 'Company_name': values.Company_name}}, 
             //   {
@@ -105,30 +105,30 @@ export default function JobCreate(){
             {loading && "Loading..."}
             <Formik
                 initialValues={{
-                    Company_name: 'Netflix',
-                    Position: 'Testing',
-                    Employment_type: 'Full-time', 
-                    Primary_Skills: 'Researcher',
-                    Skills_tag: 'dsadsa,dsadsa',
-                    Location: 'Remote',
+                    Company_name: '',
+                    Position: '',
+                    Employment_type: '', 
+                    Primary_Skills: '',
+                    Skills_tag: '',
+                    Location: '',
                     available: true,
-                    Min_salary: '20000',
-                    max_salary: '30000',
-                    Description: 'ddadsadasad',
+                    Min_salary: '',
+                    max_salary: '',
+                    Description: '',
                     company_logo: "",
                     user: '',
-                    url: 'https://hellfiresecurity.com/',
-                    email: 'test@gmail.com',
+                    url: '',
+                    email: '',
                     show_logo: true,
                     Highlight: false,
                     // sticky_day: false,
                     // sticky_week: false,
                     // sticky_month: false,
-                    feedback: 'asdasdad',
-                    company_twitter: '@twitter',
-                    company_email: 'twitter@gmail.com',
-                    invoice_email: 'twitter@gmail.com',
-                    invoice_address: 'sadsadsalk',
+                    feedback: '',
+                    company_twitter: '',
+                    company_email: '',
+                    invoice_email: '',
+                    invoice_address: '',
                     paid: false
                 }}
                 onSubmit={handleSubmit}>

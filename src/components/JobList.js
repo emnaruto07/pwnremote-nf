@@ -75,7 +75,7 @@ export default function JobList() {
           const highlightJobs = res.data.filter(job => job.Highlight)
           const restOfJobs = res.data.filter(job => !job.Highlight)
 
-          console.log(res.data)
+          // console.log(res.data)
           setJobs(restOfJobs)
           setHighlightJobs(highlightJobs)
         })

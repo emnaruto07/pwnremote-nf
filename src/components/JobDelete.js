@@ -30,7 +30,7 @@ export default function JobDelete(){
         return () => null
     }, [id])
 
-    console.log(job)
+    // console.log(job)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -41,7 +41,7 @@ export default function JobDelete(){
             }
         })
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 navigate(`/`)
             })
             .finally(() => {

@@ -7,7 +7,7 @@ export default function ConfirmEmail(){
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
     const { key } = useParams()
-    console.log(key)
+    // console.log(key)
 
     function handleSubmit(e) {
         e.preventDefault()

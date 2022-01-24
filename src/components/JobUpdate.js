@@ -53,7 +53,7 @@ export default function JobUpdate(){
         return () => null
     }, [id])
 
-    console.log(job)
+    // console.log(job)
 
     function handleSubmit(values) {
         setLoading(true)
@@ -88,7 +88,7 @@ export default function JobUpdate(){
             }
         })
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 navigate(`/jobs/${id}`)
             })
             .finally(() => {
