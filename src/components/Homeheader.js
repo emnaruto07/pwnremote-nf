@@ -2,7 +2,6 @@ import React from 'react';
 import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { SearchIcon, BriefcaseIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 
 function Homeheader() {
   const stats = [
