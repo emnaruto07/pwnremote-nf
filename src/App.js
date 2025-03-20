@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { Toaster, toast } from 'react-hot-toast';
 
 import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
@@ -25,7 +26,6 @@ import About from "./components/About";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
 import Resources from "./components/Resources";
-import FeedBack from 'react-feedback-popup';
 import { API } from './api'
 // import axios from "axios";
 
@@ -36,64 +36,91 @@ function PrivateRoute({ children }){
   return user ? children : <Navigate replace to="/login"/>
 }
 
+function FeedbackButton() {
+  const handleFeedback = async (data) => {
+    try {
+      const response = await fetch(API.userfeedback.feedback, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Server error');
+      }
+      
+      toast.success('Thanks for your feedback! 🎉');
+    } catch (error) {
+      toast.error('Could not send feedback. Please try again.');
+    }
+  };
+
+  return (
+    <button
+      onClick={() => handleFeedback()}
+      className="fixed left-4 bottom-4 bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-105"
+      aria-label="Give Feedback"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+      </svg>
+    </button>
+  );
+}
+
 export default function App() {
 
   return (
     <Router>
       <AuthContextProvider>
-          <div className="border-solid border-2 max-w-6xl mx-auto justify-center rounded-lg shadow-sm px-8 pb-2">
-            <Navbar />
-            <Homeheader />
-            {/* A <Router> looks through its children <Route>s and
-                renders the first one that matches the current URL. */}
-              <div className='max-w-6xl mx-auto py-5 px-4'>
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              <Homeheader />
+              <div className="p-6">
                 <Routes>
-                  <Route path="/create-job" element={<PrivateRoute><JobCreate /></PrivateRoute>} exact />
-                  <Route path="/login" element={<Login />} exact />
+                  <Route path="/create-job" element={<PrivateRoute><JobCreate /></PrivateRoute>} />
+                  <Route path="/login" element={<Login />} />
                   {/* <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} exact /> */}
                   {/* <Route path="/jobs/:id/sponsor" element={<PrivateRoute><Payment /></PrivateRoute>} exact /> */}
-                  <Route path="/signup" element={<Signup />} exact />
-                  <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} exact />
-                  <Route path="/jobs/:id" element={<JobDetail />} exact/>
-                  <Route path="/payment/success" element={<Success />} exact/>
-                  <Route path="/faqs" element={<Faqs />} exact/>
-                  <Route path="/learn-hacking" element={<Resources />} exact/>
-                  <Route path="/about" element={<About />} exact/>
-                  <Route path="/terms" element={<Terms />} exact/>
-                  <Route path="/privacy" element={<Privacy />} exact/>
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail />} />
+                  <Route path="/jobs/:id" element={<JobDetail />} />
+                  <Route path="/payment/success" element={<Success />} />
+                  <Route path="/faqs" element={<Faqs />} />
+                  <Route path="/learn-hacking" element={<Resources />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/privacy" element={<Privacy />} />
                   <Route path="/jobs/:id/update" element={<PrivateRoute><JobUpdate /></PrivateRoute>} />
                   <Route path="/jobs/:id/delete" element={<PrivateRoute><JobDelete /></PrivateRoute>} />
-                  <Route path="/" element={<JobList />} exact />
+                  <Route path="/" element={<JobList />} />
                 </Routes>
               </div>
-              <FeedBack 
-              style={{zIndex:'2', marginLeft:'10px', position:'fixed'}}
-              position="left"
-              numberOfStars={5}
-              // handleClose={() => ("handleclose")}
-              handleSubmit={(data) => 
-                fetch(API.userfeedback.feedback, {
-                  headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                  method: 'POST', // or 'PUT'
-                  body: JSON.stringify(data),
-                }).then((response) => { 
-                  if (!response.ok) {
-                    return Promise.reject('Our servers are having issues! We couldn\'t send your feedback!');
-                  }
-                  response.json()
-                }).then(() => {
-                  alert('Success! Thanks for the feedback. :)');
-                }).catch((error) => {
-                  alert('Our servers are having issues! We couldn\'t send your feedback!', error);
-                })
-              }
-              // handleButtonClick={() => ("handleButtonClick")}
-              
-              /> 
-              <Footer />
+            </div>
+          </main>
+          <FeedbackButton />
+          <Footer />
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              duration: 5000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+              },
+              success: {
+                duration: 3000,
+                theme: {
+                  primary: '#4aed88',
+                }
+              },
+            }}
+          />
         </div>
       </AuthContextProvider>
     </Router>

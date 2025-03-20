@@ -1,167 +1,136 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import pwn from '../assets/PwnRemote.png';
 
-function Footer() {
-    return (
-        <footer className="pt-40 px-4 divide max-w-6xl mx-auto text-center">
-            <div className="container flex flex-col justify-center mx-auto space-y-8 lg:flex-row lg:space-y-0">
+const navigation = {
+  main: [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'FAQs', href: '/faqs' },
+    { name: 'Learn Hacking', href: '/learn-hacking' },
+  ],
+  social: [
+    {
+      name: 'Twitter',
+      href: 'https://twitter.com/emnaruto07',
+      icon: (props) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+        </svg>
+      ),
+    },
+    {
+      name: 'GitHub',
+      href: 'https://github.com/emnaruto07',
+      icon: (props) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path
+            fillRule="evenodd"
+            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+    },
+  ],
+  legal: [
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
+  ],
+};
+
+export default function Footer() {
+  return (
+    <footer className="bg-white" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8">
+            <Link to="/" className="flex items-center">
+              <img className="h-12 w-auto" src={pwn} alt="PwnRemote" />
+              <span className="ml-3 text-xl font-bold text-gray-900">PwnRemote</span>
+            </Link>
+            <p className="text-sm leading-6 text-gray-600">
+              The leading platform for cybersecurity jobs and talent.
+            </p>
+            <div className="flex space-x-6">
+              {navigation.social.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-400 hover:text-gray-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold leading-6 text-gray-900">Navigation</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.main.map((item) => (
+                    <li key={item.name}>
+                      <Link to={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.legal.map((item) => (
+                    <li key={item.name}>
+                      <Link to={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold leading-6 text-gray-900">Contact Us</h3>
+              <dl className="mt-6 space-y-4 text-sm leading-6">
                 <div>
-                    <Link to="/" className="flex sm:justify-center" >
-                        <div className="flex h-12 w-12">
-                            <img src={pwn} alt="logo" className="h-10 w-10 mr-2" />
-                        </div>
-                        <span className="font-semibold text-gray-500 text-2xl">
-                            Pwnremote
-                        </span>
-                    </Link>
+                  <dt className="sr-only">Email</dt>
+                  <dd>
+                    <a className="text-primary-600 hover:text-primary-700" href="mailto:support@pwnremote.com">
+                      support@pwnremote.com
+                    </a>
+                  </dd>
                 </div>
+              </dl>
             </div>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-10 text-sm sm:grid-cols-4 mx-auto w-auto">
-                <div className="space-y-3">
-                    <h3 className="text-red-500 uppercase font-medium">Support</h3>
-                    <ul className='space-y-1 font-medium'>
-                        <li>
-                            <Link to="/" className="">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/faqs" className="">Questions?</Link>
-                        </li>
-                        <li>
-                            <Link to="/about" className="">About Us</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div className="space-y-3 font-medium">
-                    <h3 className="text-red-500 uppercase tracking-wide font-medium">Company</h3>
-                    <ul className='space-y-1 font-medium'>
-                        <li>
-                            <Link to="/privacy" className="">Privacy</Link>
-                        </li>
-                        <li>
-                            <Link to="/terms" className="">Terms of Service</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div className="space-y-3 font-medium">
-                    <h3 className="text-red-500 uppercase tracking-wide font-medium">Hackers</h3>
-                    <ul className='space-y-1 font-medium'>
-                        <li>
-                            <Link to="/learn-hacking" className="">Learn Hacking?</Link>
-                        </li>
-                        {/* <li>
-                            <Link to="/about" className="">Terms of Service</Link>
-                        </li> */}
-                    </ul>
-                </div>
-                <div className="space-y-3">
-                    <h3 className="text-red-500 uppercase tracking-wide font-medium">Contact Us</h3>
-                    <ul className='space-y-1 font-medium'>
-                        <li className='flex'>
-                            <h2 className="font-semibold">Email:</h2><span className='ml-1'>support@pwnremote.com</span>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </div>
-            <div className="py-6 text-center text-red-500 text-sm font-medium">
-                2022 P2PSEC Pte Ltd. All rights reserved.
-            </div>
-            <div className='text-center text-sm'>
-                Made with ❤️ by <span><a className="border-2 border-solid border-black font-bold rounded-lg bg-black text-white" href="https://twitter.com/emnaruto07">Shazeb</a></span>
-            </div>
-        </footer>   
-    )
+          </div>
+        </div>
+        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-xs leading-5 text-gray-500">
+              &copy; {new Date().getFullYear()} P2PSEC Pte Ltd. All rights reserved.
+            </p>
+            <p className="text-xs leading-5 text-gray-500">
+              Made with ❤️ by{' '}
+              <a
+                href="https://twitter.com/emnaruto07"
+                className="font-semibold text-primary-600 hover:text-primary-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Shazeb
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer
-
-
-// <footer className="mb-auto border-t border-gray-200">
-    //     <div
-    //         className="
-    //         container
-    //         flex flex-col flex-wrap
-    //         px-4
-    //         py-6
-    //         mt-4
-    //         mx-auto
-    //         md:items-center
-    //         lg:items-start
-    //         md:flex-row md:flex-nowrap
-    //         "
-    //     >
-    //         <div
-    //         className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left"
-    //         >
-    //         <td className="py-5 px-3">
-    //             <img src={pwn} className="h-40 w-40 border-2" alt="" />
-    //         </td> 
-    //         <h2
-    //             className="
-    //             flex
-    //             items-center
-    //             justify-center
-    //             text-4xl
-    //             font-bold
-    //             text-red-500
-    //             md:justify-start
-    //             "
-    //         >
-    //             pwnremote
-    //         </h2>
-    //             <span>by <a className="border-2 border-solid border-amber-600 font-bold bg-amber-600 text-white" href="https://twitter.com/emnaruto07">@emnaruto07</a></span>
-    //         </div>
-    //         <div className="justify-between w-full mt-4 text-center lg:flex">
-    //         <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-    //             <h2 className="mb-2 font-bold underline text-gray-900">
-    //             Support
-    //             </h2>
-    //             <ul className="mb-8 space-y-2 text-sm list-none">
-    //             <li>
-    //                 <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
-    //             </li>
-    //             <li>
-    //                 <Link to="/faqs" className="text-gray-600 hover:text-gray-800">Questions?</Link>
-    //             </li>
-    //             <li>
-    //                 <Link to="/about" className="text-gray-600 hover:text-gray-800">About Us</Link>
-    //             </li>
-                
-    //             </ul>
-    //         </div>
-    //         <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-    //             <h2 className="mb-2 font-bold underline text-gray-900">
-    //             Legal
-    //             </h2>
-    //             <ul className="mb-8 space-y-2 text-sm list-none">
-    //             <li>
-    //                 <Link to="/terms" className="text-gray-600 hover:text-gray-800">Terms Of Service</Link>
-    //             </li>
-    //             <li>
-    //                 <Link to="/privacy" className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
-    //             </li>
-    //             <li>
-    //                 <Link to="/learn-hacking" className="text-gray-600 hover:text-gray-800">Learn Hacking?</Link>
-    //             </li>
-                
-    //             </ul>
-    //         </div>
-    //         <div className="w-full px-4 lg:w-1/3 md:w-1/2">
-    //             <h2 className="mb-2 font-bold underline text-gray-900">
-    //             Contact Us
-    //             </h2>
-    //             <ul className="mb-8 space-y-2 text-sm list-none">
-    //                 <li>
-    //                     <h2 className="text-black font-semibold">Email: </h2><p>support@pwnremote.com</p>
-    //                 </li>
-    //             </ul>
-    //         </div>
-    //         </div>
-    //     </div>
-    //     <div className="flex justify-center">
-    //         <p className="text-base text-gray-400">
-    //         All rights reserved by @ pwnremote 2021
-    //         </p>
-    //     </div>
-    // </footer>

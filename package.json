@@ -3,23 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@stripe/react-stripe-js": "^1.7.0",
-    "@stripe/stripe-js": "^1.22.0",
-    "@tailwindcss/forms": "^0.4.0",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.24.0",
-    "formik": "^2.2.9",
-    "react": "^17.0.2",
-    "react-color": "^2.19.3",
-    "react-dom": "^17.0.2",
-    "react-feedback-popup": "^1.3.1",
-    "react-ga": "^3.3.0",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "^5.0.0",
-    "typewriter-effect": "^2.18.2",
-    "web-vitals": "^2.1.2"
+    "@headlessui/react": "^1.7.19",
+    "@heroicons/react": "^2.2.0",
+    "@stripe/react-stripe-js": "^2.5.1",
+    "@stripe/stripe-js": "^3.0.7",
+    "@tailwindcss/forms": "^0.5.7",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "@testing-library/user-event": "^14.5.2",
+    "axios": "^1.6.7",
+    "formik": "^2.4.5",
+    "framer-motion": "^11.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.2",
+    "react-router-dom": "^6.22.2",
+    "react-scripts": "5.0.1",
+    "typewriter-effect": "^2.21.0",
+    "web-vitals": "^3.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,8 +47,8 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.1",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.8"
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }
